@@ -1,0 +1,1 @@
+"""MiniBNG FastAPI backend package."""
