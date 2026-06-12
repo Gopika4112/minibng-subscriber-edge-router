@@ -76,6 +76,12 @@ cli/
 docs/
   ARCHITECTURE.md           Module and pipeline documentation
   DEMO.md                   Demo walkthrough and interview script
+
+linux_lab/
+  setup_namespaces.sh       Optional Linux namespace subscriber lab
+  cleanup_namespaces.sh     Remove namespace lab resources
+  test_connectivity.sh      Ping checks for namespace topology
+  show_topology.sh          Inspect namespaces, bridge, IPs, and routes
 ```
 
 ## Tech Stack
@@ -165,6 +171,19 @@ By default, the CLI calls `http://127.0.0.1:8001`. Override it with:
 
 ```bash
 MINIBNG_API_URL=http://127.0.0.1:8000 python3 cli/minibng_cli.py show metrics
+```
+
+## Optional Linux Namespace Lab
+
+MiniBNG also includes a separate Linux networking lab that creates three
+simulated broadband subscribers using network namespaces, veth pairs, and a
+Linux bridge. This lab is independent from the FastAPI simulation.
+
+```bash
+sudo bash linux_lab/setup_namespaces.sh
+sudo bash linux_lab/test_connectivity.sh
+sudo bash linux_lab/show_topology.sh
+sudo bash linux_lab/cleanup_namespaces.sh
 ```
 
 ## API Endpoints Overview
